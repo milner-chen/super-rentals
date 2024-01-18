@@ -1,0 +1,3 @@
+ember new
+
+ember server
