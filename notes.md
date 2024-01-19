@@ -63,3 +63,8 @@ forwarding HTML attributes (AKA splattribute syntax)
 - in component: `<img ...attrinbutes>`
 - invoking: `<Rental::Image src="https://url.com" alt="image.png">`
 - can pass all HTML attributes
+
+test coverage
+- if a component will be extensively tested, assertions in the parent tests can be kept at a minimum
+- this way, the parent tests don't have to be updated when the child component is changed
+- the changes will occur in the child's tests instead
