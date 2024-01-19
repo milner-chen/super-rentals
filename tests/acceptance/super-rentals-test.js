@@ -1,16 +1,10 @@
-import { assert, module, test } from 'qunit';
+import { module, test } from 'qunit';
 // import { visit, currentURL } from '@ember/test-helpers';
 import { click, visit, currentURL } from '@ember/test-helpers';
 import { setupApplicationTest } from 'super-rentals/tests/helpers';
 
 module('Acceptance | super rentals', function (hooks) {
   setupApplicationTest(hooks);
-
-  // test('visiting /super-rentals', async function (assert) {
-  //   await visit('/super-rentals');
-
-  //   assert.strictEqual(currentURL(), '/super-rentals');
-  // });
 
   // change path from '/super-rentals' to '/'
   test('visiting /', async function (assert) {
@@ -19,19 +13,18 @@ module('Acceptance | super rentals', function (hooks) {
     // await keyword --> wait for page to finish loading
     await visit('/'); // await + visit usually paired up for this reason
 
-
     // assertion: specify things to check
-      // will be alerted if app does not behave as expected
+    // will be alerted if app does not behave as expected
 
     // check that current url is '/'
     assert.strictEqual(currentURL(), '/');
     // check that curr page has an h2 with specified text
-      // just one way to check template rendered properly
+    // just one way to check template rendered properly
     assert.dom('h2').hasText('Welcome to Super Rentals!');
 
     // check that there is an element that matches css slector '.jumbo a.button' w/ specified text
-      // look for tag with 'jumbo' class
-      // look for a tag inside w/ 'button' class
+    // look for tag with 'jumbo' class
+    // look for a tag inside w/ 'button' class
     assert.dom('.jumbo a.button').hasText('About Us');
     // click on this link + wait for user interaction to finish
     await click('.jumbo a.button');
@@ -68,5 +61,4 @@ module('Acceptance | super rentals', function (hooks) {
     // check current url
     assert.strictEqual(currentURL(), '/about');
   });
-
 });
