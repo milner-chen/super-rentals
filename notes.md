@@ -43,3 +43,11 @@ run test server
 `{{yield}}`
 - will replace component tag with content in component's template
 - similar to using `{children}` in react
+
+application template
+- does not have its own URL and cannot be navigated to
+- put things that should appear on every page here --> common layout
+- ex: navbar, footer
+- `{{outlet}}`: indicates where site's page should be rendered
+  - similar to `{{yield}}`
+  

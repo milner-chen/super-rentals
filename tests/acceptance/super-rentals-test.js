@@ -84,7 +84,7 @@ module('Acceptance | super rentals', function (hooks) {
     await click('nav a.menu-about');
     assert.strictEqual(currentURL(), '/about');
 
-    await click('nav .links a.menu-contact');
+    await click('nav a.menu-contact');
     assert.strictEqual(currentURL(), '/getting-in-touch');
 
     await click('nav a.menu-index');
