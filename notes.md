@@ -29,7 +29,7 @@ generate automated tests
 - acceptance tests AKA application tests
 - test app from user perspective
 1. test(str, async function(assert))
-- str specifies route to visit
+- str specifies name of test / what is being tested
 - function contains the code to run for the test
 `ember generate component-test app-name`
 - generate file called `app-name-test.js` in `/tests/component`
