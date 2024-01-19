@@ -50,4 +50,16 @@ application template
 - ex: navbar, footer
 - `{{outlet}}`: indicates where site's page should be rendered
   - similar to `{{yield}}`
-  
+
+namespaced components
+`ember generate component rental/image`
+- will create `rental` folder in components + image template
+- invoke with `<Rental::Image>`
+- organize components by folders (like putting everything under api)
+- optional + doesn't have any special functionality
+
+
+forwarding HTML attributes (AKA splattribute syntax)
+- in component: `<img ...attrinbutes>`
+- invoking: `<Rental::Image src="https://url.com" alt="image.png">`
+- can pass all HTML attributes
