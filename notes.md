@@ -68,3 +68,23 @@ test coverage
 - if a component will be extensively tested, assertions in the parent tests can be kept at a minimum
 - this way, the parent tests don't have to be updated when the child component is changed
 - the changes will occur in the child's tests instead
+
+component classes
+`ember generate component-class rental/images`
+- associate javascript file with a component
+- ```js
+  @tracker isLarge = false;
+  // initialize an instance variable to hold size of image
+  // @tracker --> monitor state of this variable for updates
+  // rerender any templates that uses this value
+  ```
+- ```js
+  @action toggleSize() {
+    this.isLarge = !this.isLarge;
+  }
+  // create method to toggle size
+  // @action --> method will be used in templates
+    // will not function as a callback without this decorator
+  
+  ```
+
