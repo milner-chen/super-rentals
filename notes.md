@@ -12,6 +12,7 @@ Create Pages:
   - create corresponding template
 
 components
+- create new `.hbs` file under `app/components`
 1. arguments: `@argName=""`
 2. regular HTML attributes: `attrName=""`
 
@@ -30,7 +31,15 @@ generate automated tests
 1. test(str, async function(assert))
 - str specifies route to visit
 - function contains the code to run for the test
+`ember generate component-test app-name`
+- generate file called `app-name-test.js` in `/tests/component`
+- component tests AKA rendering tests
+- render and test a single component at a time
 
 run test server
 `ember test --server` or `ember t -s`
 - visit att 'http://localhost:7357/'
+
+`{{yield}}`
+- will replace component tag with content in component's template
+- similar to using `{children}` in react
