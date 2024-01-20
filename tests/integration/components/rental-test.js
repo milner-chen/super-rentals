@@ -18,6 +18,7 @@ module('Integration | Component | rental', function (hooks) {
     assert.dom('article .detail.bedrooms').includesText('15');
     // check for image
     assert.dom('article .image').exists();
-
+    // checking for Map component
+    assert.dom('article .map').exists();
   });
 });

@@ -82,5 +82,71 @@ module('Integration | Component | map', function (hooks) {
       .hasAttribute('height', '120');
 
   });
+
+  test('it updates the `src` attr when the args change', async function (assert) {
+    // this.setProperties -> testing API that passes values into component
+      // uses testing context object + passes in the form of args
+    this.setProperties({
+      lat: 37.7749,
+      lng: -122.4194,
+      zoom: 10,
+      width: 150,
+      height: 120,
+    });
+    
+    await render(hbs`<Map
+      @lat={{this.lat}}
+      @lng={{this.lng}}
+      @zoom={{this.zoom}}
+      @width={{this.width}}
+      @height={{this.height}}
+    />`);
+
+    let img = find('.map img');
+  
+    assert.ok(
+      img.src.includes('-122.4194,37.7749,10'),
+      'the src should include the lng,lat,zoom parameters'
+    );
+  
+    assert.ok(
+      img.src.includes('150x120@2x'),
+      'the src should include the width,height and @2x parameter'
+    );
+  
+    // change these params + check that src attr changed accordingly
+    this.setProperties({
+      width: 300,
+      height: 200,
+      zoom: 12,
+    });
+  
+    assert.ok(
+      img.src.includes('-122.4194,37.7749,12'),
+      'the src should include the lng,lat,zoom parameter'
+    );
+  
+    assert.ok(
+      img.src.includes('300x200@2x'),
+      'the src should include the width,height and @2x parameter'
+    );
+  
+    // change these params and check that the src attr updated
+    this.setProperties({
+      lat: 47.6062,
+      lng: -122.3321,
+    });
+  
+    assert.ok(
+      img.src.includes('-122.3321,47.6062,12'),
+      'the src should include the lng,lat,zoom parameter'
+    );
+  
+    assert.ok(
+      img.src.includes('300x200@2x'),
+      'the src should include the width,height and @2x parameter'
+    );
+
+  });
   
 });

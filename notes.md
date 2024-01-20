@@ -88,3 +88,7 @@ component classes
   
   ```
 
+getters + `auto tracking`
+- can be used in the class and within templates
+- cannot be `@traacaked` like instance variables
+- automatically `tacks` values that are accessed while computing the getter's value (`dependencies`)
