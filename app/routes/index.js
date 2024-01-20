@@ -1,5 +1,7 @@
 import Route from '@ember/routing/route';
 
+const COMMUNITY_CATEGORIES = ['Condo', 'Townhouse', 'Apartment'];
+
 export default class IndexRoute extends Route {
   // model hook
     // fetches + prepares data for route
@@ -7,19 +9,23 @@ export default class IndexRoute extends Route {
     // returns an object: model for the route
   async model() {
     // we're still not fetching yet, just returning object of info
-    return {
-      title: 'Grand Old Mansion',
-      owner: 'Veruca Salt',
-      city: 'San Francisco',
-      location: {
-        lat: 37.7749,
-        lng: -122.4194,
-      },
-      category: 'Estate',
-      type: 'Standalone',
-      bedrooms: 15,
-      image: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Crane_estate_(5).jpg',
-      description: 'This grand old mansion sits on over 100 acres of rolling hills and dense redwood forests.',
-    };
-  }
+    
+    let res = await fetch('/api/rentals.json');
+    // let data = await res.json();
+    let { data } = await res.json();
+
+    return data.map((model) => {
+      let { attributes } = model;
+      let type;
+
+      if (COMMUNITY_CATEGORIES.includes(attributes.category)) {
+        type = 'Community';
+      } else {
+        type = 'Standalone';
+      }
+
+      return { type, ...attributes };
+    });
+
+  };
 }
