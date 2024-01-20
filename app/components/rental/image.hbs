@@ -1,23 +1,17 @@
-{{!-- <div class="image"> --}}
-  {{!-- <img src="" alt=""> --}}
-  {{!-- <img ...attributes> --}}
-{{!-- </div> --}}
+<button
+  type="button"
+  class="image {{if this.isLarge "large"}}"
+  {{ on "click" this.toggleSize }}
+>
+  <img ...attributes>
+  <small>
+    {{!-- {{#if this.isLarge}}
+      View Smaller
+    {{else}}
+      View Larger
+    {{/if}} --}}
 
-{{!-- render content conditionally --}}
-{{#if this.isLarge}}
-  {{!-- <div class="image large"> --}}
-  <button type="button" class="image large" {{on "click" this.toggleSize}}>
-    {{!-- use button for better accessibility --}}
-    {{!-- on --> modifier to attach event handler --}}
-      <img ...attributes>
-      <small>View Smaller</small>
-  </button>
-  {{!-- </div> --}}
-{{else}}
-  {{!-- <div class="image"> --}}
-  <button type="button" class="image" {{on "click" this.toggleSize}}>
-    <img ...attributes>
-    <small>View Larger</small>
-  </button>
-  {{!-- </div> --}}
-{{/if}}
+    {{!-- if [condition] [value if true] [value if false] --> like ternary? --}}
+    View {{if this.isLarge "Smaller" "Larger"}}
+  </small>
+</button>
