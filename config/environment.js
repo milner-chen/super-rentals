@@ -38,13 +38,16 @@ module.exports = function (environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
+
+    ENV.MAPBOX_ACCESS_TOKEN = process.env.EMBER_APP_MAPBOX_ACCESS_TOKEN;
+
   }
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
   }
 
-  ENV.MAPBOX_ACCESS_TOKEN = process.env.MAPBOX_ACCESS_TOKEN;
+  ENV.MAPBOX_ACCESS_TOKEN = process.env.EMBER_APP_MAPBOX_ACCESS_TOKEN;
 
   return ENV;
 };

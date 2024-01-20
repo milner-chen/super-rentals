@@ -1,0 +1,11 @@
+<div class="map">
+  <img
+    {{!-- default alt that could be overwritten with ...attributes --}}
+    alt="Map image at coordinates {{@lat}},{{@lng}}"
+    ...attributes
+    {{!-- after ...attributes and will not be overwritten --}}
+    src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/{{@lng}},{{@lat}},{{@zoom}}/{{@width}}x{{@height}}@2x?access_token={{this.token}}"
+    width={{@width}} height={{@height}}
+  >
+</div>
+{{!-- all the @values will be passed to Map component from template --}}
